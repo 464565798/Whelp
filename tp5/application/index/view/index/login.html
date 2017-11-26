@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>微助登录</title>
+<link rel="shortcut icon" href="__IMAGE__/index/favicon.ico">
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript">
+	function checkSubmit(){
+		return true;
+		var phone = $('.phone').val();
+		var password = $('.password').val();
+//简单验证
+		if(phone.length != 11)
+		{
+			return false;
+		}
+		return true;
+
+		// var param = {'phone':phone,'password':password};
+		// $.ajax({
+		// 	'async':false,
+		// 	'type' : 'post',
+		// 	// 'contentType' : "application/json; charset=utf-8",
+		// 	'dataType' : 'json',
+		// 	'url': "{:url('home/User/loginUser')}",
+		// 	'data': param,
+		// 	'success': function(msg,status){
+		// 		alert(msg.code);
+		// 		if(msg.code == 200){
+		// 			alert(msg.code);
+		// 			return true;
+		// 		}else{
+
+		// 			return false;
+		// 		}
+		// 	},
+		// 	'error': function (xhr,desc,err){
+		// 		alert(1);
+		// 		console.log(xhr);
+		// 		console.log('Details:'+desc+'\nError:'+err);
+		// 	}	
+
+		// });
+		// alert('222');
+		// return false;
+	}
+
+</script>
+<style type="text/css">
+	h1{
+		text-align: center;
+	}
+	body{
+		background-color: #5e99B1;
+
+	}
+	fieldset{
+		width: 250px;
+		/* height: 400px; */
+	}
+	div{
+		width: 250px;
+		height: 200px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 100px;
+	}
+	h3{
+		color: red;
+		width: 100%;
+		text-align: center;
+	}
+	text{
+		color: red;
+		text-align: center;
+		width: 100%;
+		display: block;
+	}
+	img{
+		display: block;
+	}
+	.resign{
+		width: 80px;
+		margin-left: 20px;
+		float: left;
+	}
+	.vertifierCode,.phone,.password{
+
+		 /* margin-left: 70px;  */
+	}
+	.login{
+		/*position: absolute;;*/
+		width: 80px;
+		margin-right: 20px;
+		float: right;
+	}
+</style>
+</head>
+<body>
+<h1>微助登录</h1>
+	<div>
+		<h3 id='error'>{$error}</h3>
+		<form method="post"  onsubmit="return checkSubmit();" action="{:url('login/index')}">
+			<fieldset>
+			<legend>登录信息</legend>
+				账户：<input type="text" class='phone' name="phone" placeholder="请输入账号" required/><br />
+				密码：<input type="password" class='password' name="password" placeholder="请输入密码" required/><br />
+				
+				验证码：<input type="text" class='vertifierCode' name="vertifierCode" placeholder="请输入验证码" required/><br /><br />
+				<img src="" />
+				<!-- <input type="reset" value="取消"></input> -->
+				<input  class="resign" type="button" value="注册"></input>
+				<input class="login" type="submit" value="登录"></input>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>

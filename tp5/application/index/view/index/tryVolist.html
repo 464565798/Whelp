@@ -1,0 +1,17 @@
+{include file='public/header' title='微助教育平台' CssPath='__CSS__/index/try.css'}
+
+<!-- {volist name='user' id='voo' offset='1' length='1' mode='2'} -->
+
+
+{volist name='user' id='voo'}
+
+    <!-- <h3>{$i}---{$key}---{$voo.name}----{$voo.userId}---{$voo.userKey}</h3> -->
+    {switch name='$voo.phone'}
+        {case value='$phone' break='1'}123{/case}
+        {default /}{$voo.phone}-----
+    {/switch}
+{/volist}
+<!-- {if $phone=='15101082479'}123
+{else /}456
+{/if} -->
+{include file='public/foot'}

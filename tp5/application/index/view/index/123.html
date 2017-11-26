@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="format-detection" content="telephone=no">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<title>撕撕撕撕撕撕起来！！</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!--<link href="http://image.iauto360.cn/app-size/css/gift.css?v=2" rel="stylesheet">-->
+<link href="../css/gift.css?v=2" rel="stylesheet">
+<style>
+    canvas{
+        width: 100%;
+        height: 100%;
+    }
+    .dial{
+        background: url(http://image.iauto360.cn/app-size/images/turnplate1.png) center center no-repeat;
+        background-size: 100% 100%;
+        padding:1.27rem;
+        box-sizing:border-box;
+    }
+   .layui-layer-shade{
+    	position:fixed;
+    	top:50px; 
+    	bottom:50px;
+		verflow:scroll;
+    }
+ 
+</style>
+</head>
+<body style="background-color:#dc4e26;">
+    <div class="wrap" style="overflow:hidden;background-color:#dc4e26;">
+    	<div class="draw">
+            <div class="lucky"></div>
+            <div class="remain">
+                还有 <span>0天0小时0分0秒</span>就开始了,<br/>186****2835,获得白金卡优惠券2张;135****4790,获得30油点;135****4790,获得白金卡优惠券1张;135****4790,获得白金卡优惠券2张;135****4790,获得白金卡优惠券1张;135****4790,获得30油点;135****4790,获得5油点;135****4790,获得30油点;135****4790,获得50油点;135****4790,获得50油点;
+            </div>
+           
+            <div class="pricelist">
+            	<div class="pricelist_in">
+            		<ul>
+		            	<li>186****2835,获得白金卡优惠券2张;135****4790,获得30油点;135****4790,获得白金卡优惠券1张;135****4790,获得白金卡优惠券2张;135****4790,获得白金卡优惠券1张;135****4790,获得30油点;135****4790,获得5油点;135****4790,获得30油点;135****4790,获得50油点;135****4790,获得50油点;</li>
+		            </ul>
+            	</div>            	
+            </div>            
+            <div class="turnplate">
+                <div class="platebg"></div>
+                <!-- <img src="http://image.iauto360.cn/app-size/images/turnplate.png" alt="" class="dial"> -->
+                <div class="dial">
+                    <canvas id="canvas" width="400" height="400"></canvas>
+                </div>
+                <div class="drawclick">                    
+                    <div class="circle">
+                        <div class="arrow"></div>
+                    </div>
+                    <!-- <input type="button" class="clicktxt" disabled="disabled"> -->
+                    <a href="javascript:void(0);" class="clicktxt" style="background-color:#ccc;"></a>                    
+                </div>
+            </div>
+            <div class="record"><a href="javascript:void(0);" class = "recordlink"  onclick="getRecord()"></a> </div>
+            <div class="rule">
+                <h3>活动规则</h3>
+                1、每位用户均有一次免费抽奖机会；<br>2、每位用户每天有三次使用10油点的抽奖机会；<br>3、使用50油点可获得每日额外的抽奖机会，且次数不限。
+            </div>
+        </div>
+    </div>
+    <div class="bg"></div>
+    <div class="tc_result">
+    	<a href="javascript:void(0);" class="close"></a>
+    	<div class="noprice">
+    		运气不佳，再来一次！<br/>您可分享<a href="javascript:void(0);">微信好友，微信朋友圈</a><br/>可获得3次抽大奖机会，还可<br/>使用<a href="javascript:void(0);" class="exchange">50油点兑换</a>1次抽大奖机会。
+		</div>    
+    </div>
+</body>
+<script src="http://image.iauto360.cn/app-size/share-page/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="http://image.iauto360.cn/app-size/share-page/js/fastclick.min.js" type="text/javascript"></script>
+<script src="http://image.iauto360.cn/app-size/share-page/js/com.js" type="text/javascript"></script>
+<script src="../js/layer.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+FastClick.attach(document.body);
+document.body.addEventListener('touchstart', function() {});
+var aColor=["#ffeb8c","#ffd570"];
+var giftArr=[{"txt":"运气不佳","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"1"},{"txt":"50油点","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"2"},{"txt":"运气不佳","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"3"},{"txt":"30油点","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"4"},{"txt":"白金卡优惠券1张","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"5"},{"txt":"白金卡优惠券2张","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"6"},{"txt":"运气不佳","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"7"},{"txt":"5油点","img":"http://a3.att.hudong.com/30/63/19300001061744132850638768714_950.jpg","id":"8"}];
+//var giftArr=[{'txt':'300油点'},{'txt':'不要灰心'},{'txt':'500油点'},{'txt':'汽车应急工具箱组合套装','img':'../images/obd2.png'},{'txt':'谢谢参与'},{'txt':'凌度行车记录仪','img':'../images/ipad.png'},{'txt':'100油点'},{'txt':'谢谢参与'}];
+var len=giftArr.length;
+var num=len;//转盘的格数
+var everyAngel=(360/num)*Math.PI/180,Angel=360/num;//每个格子的度数
+var rotate=-90+180/num;//开始转盘旋转角度
+var bol_click=false;//当前旋转过程中点击抽奖没反应
+$(".dial").css({
+    "webkitTransform":"rotate("+rotate+"deg)",
+    "mozTransform":"rotate("+rotate+"deg)",
+    "oTransform":"rotate("+rotate+"deg)",
+    "msTransform":"rotate("+rotate+"deg)",
+    "transform":"rotate("+rotate+"deg)"
+})
+
+var canvas=document.getElementById("canvas");
+var ctx=canvas.getContext("2d");
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.save();
+//画扇形
+//1,2,3,4,5,6,8,9,10,12,15,18
+function createBg(){    
+    var startAngel=0,endAngel=0;
+    for(var i=0;i<num;i++){
+        startAngel=endAngel;
+        endAngel=startAngel+everyAngel;     
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(200,200);
+        ctx.arc(200,200,200,startAngel,endAngel,false);
+        ctx.fillStyle=aColor[i%2];
+        ctx.fill();
+        ctx.restore();
+        
+    }
+    
+}
+//把奖项放到对应位置
+function setTxt(){
+    var x=0;y=0;
+    var ind=0;
+    for(var i=0;i<num;i++){     
+        ctx.save();
+        ctx.beginPath();
+        ctx.translate(200,200);//先平移加旋转，让所有文字一样
+        ctx.rotate(i*everyAngel);
+        ctx.textAlign='center';
+        ctx.textBaseline='middle';
+        ctx.font = "Bold 20px Arial"; 
+        ctx.fillStyle="#ae6112";
+        x=160*Math.cos(everyAngel/2);
+        y=160*Math.sin(everyAngel/2);
+        ctx.translate(x,y);//把中心点平移至文字中心
+        ctx.rotate(Math.PI/2+everyAngel/2);//旋转文字
+        var j=0;
+        if(/#/.test(giftArr[i].txt)){
+	        var texts=giftArr[i].txt.split("#");
+	        for(j=0;j<texts.length;j++){
+	            ctx.fillText(texts[j],0,20*(j-1));
+	        }
+        }else{
+            ctx.fillText(giftArr[i].txt,0,-10);
+        }
+        
+        ctx.restore();
+        if(giftArr[i].img){
+            imgLoad(i,130-j*10);
+        }   
+
+    }
+
+}
+function imgLoad(i,r){
+    var oImg=new Image();
+    oImg.src=giftArr[i].img;
+    oImg.onload=function(){
+        ctx.save();
+        ctx.translate(200,200);
+        ctx.rotate(i*everyAngel);
+        x=r*Math.cos(everyAngel/2);
+        y=r*Math.sin(everyAngel/2);
+        ctx.translate(x,y);
+        ctx.rotate(Math.PI/2+everyAngel/2);
+        ctx.drawImage(oImg,-25,-25,50,50);
+        ctx.restore();
+    }
+}
+function draw(){
+    createBg();
+    setTxt();
+}
+draw();
+
+function showAlert(){
+  $(".bg").show();
+  $(".tc_result").show();  
+  bol_click=true;
+  $(".clicktxt").css("backgroundColor","#fde201");
+}
+
+function hideAlert(){
+	$(".bg").hide();
+	$(".tc_result").hide();
+    $(".clicktxt").css("backgroundColor","#ccc");
+    bol_click=false;
+}
+
+var posArr=[];
+//抽奖结束后指针停留位置
+function fnPos(){
+    for(var i=0;i<len;i++){
+        posArr.push(Angel*(i+1));
+    }
+}
+fnPos();
+//倒计时
+var countdown = parseFloat(0);
+var remainTime=parseInt(countdown/1000);
+var timer=null,bol=true;
+var drawStatus = "2";
+if(drawStatus == "1"){ //未开始
+   time(remainTime);
+   timer=setInterval(function(){
+   		remainTime--;
+   		time(remainTime);
+   },1000);
+}else if(drawStatus == "2"){ //进行中
+    $(".remain").hide();
+    showAlert();
+    $(".noprice").html("用50油点继续抽，惊喜停不下来！" + "<br/><a href='javascript:submitDraw();'>"+"马上抽奖！"+"</a>");
+	$(".pricelist").show();
+	priceScroll();
+}else{ //已结束
+    $(".remain").hide();
+    showAlert();
+    $(".close").hide(); 
+    $(".noprice").html("用50油点继续抽，惊喜停不下来！");
+}
+
+
+
+function time(times){	
+	var hour=parseInt(times/3600);
+	var minite=parseInt(times%3600/60);
+	var second=times%60;
+	var day=parseInt(hour/24);
+	hour=hour%24;
+	$(".remain span").html(day+"天"+hour+"小时"+minite+"分"+second+"秒");	
+	if(times<=0&&bol){//活动开始,刷新页面
+	    clearInterval(timer);
+	    bol=false;
+	    $(".remain").hide();
+	   // location.href="/app-site/mall/lucky-draw?ssotoken=__ssotoken__&drawId="+"1";
+		
+		  $.ajax({
+		  async:false,
+	      type:"post",
+	      url:"/app-site/mall/lucky-draw/count-down-over",
+	      dataType:"json",
+	      data:{"ssotoken":"__ssotoken__","drawId":"1"},
+	      success:function(json){					
+			showAlert();
+		    $(".noprice").html(json.model.msg + "<br/><a href='javascript:submitDraw();'>"+json.model.link+"</a>");
+			$(".pricelist").show();
+			//model.draw.drawDescribe
+			$(".pricelist .pricelist_in li").html(json.model.draw.drawDescribe);
+			priceScroll();	      		      	
+	      },
+	      error:function (XMLHttpRequest, textStatus, e){
+	            showAlert();
+	    		$(".noprice").html("网络繁忙，请刷新！");
+	      }
+	   });
+	}
+}
+
+//提交抽奖
+//点击抽奖
+var ind=0;
+var _rotate=0;
+var _move=false;
+
+function moveRotate(){
+    setTimeout(function(){
+        _rotate+=15;
+        $(".circle").css({
+            "webkitTransform":"rotate("+_rotate+"deg)"
+        })
+        if(!_move){
+            moveRotate();
+        }       
+    },30);
+}
+function submitDraw(){
+    
+    if(!bol_click){
+        return;
+    }
+    hideAlert();
+    _move=false;
+	moveRotate();
+    $.ajax({
+	  async:false,
+      type:"post",
+      url:"/app-site/mall/lucky-draw/submit",
+      dataType:"json",
+      data:{"userId":"1005258","drawId":"1","intercept":""},
+      success:function(json){
+       	var status = json.status;
+       	if(status == 4){
+       	   window.open("action://kickout?result="+json.msg);
+       	   return;
+       	}
+			//中奖停留位置
+		    for(var i=0;i<giftArr.length;i++){ 
+		       if(giftArr[i].id == json.winPrizeId){
+		           ind = i;
+		           break;
+		       }
+		    } 
+            _move=true;
+            //ind=parseInt(Math.random()*len);//通过指针停留的格子判断是否中奖
+            _rotate=_rotate%360;
+            $(".circle").css({
+                "webkitTransform":"rotate("+_rotate+"deg)",
+                "webkitTransition":"all 2.5s ease-in-out"
+            });
+            setTimeout(function(){
+                _rotate=1440+posArr[ind]            
+                $(".circle").css({
+                    "webkitTransform":"rotate("+_rotate+"deg)"  
+                })
+                setTimeout(function(){              
+                    _rotate=_rotate%360;
+                    $(".circle").css({
+                        "webkitTransition":"all 0s ease-in-out",
+                        "webkitTransform":"rotate("+_rotate+"deg)"
+                    });
+                    _move=false;
+                    showAlert();
+                    $(".close").show();
+                    if(status == 1){ //油点不足，link返回首页
+                       $(".noprice").html(json.msg+"<br/><a href='button://homepage'>"+json.linkMsg+"</a>");
+                       $(".close").hide();          
+                    }else if(status == 2){ //抽奖成功，link再抽一次
+                       $(".noprice").html(json.msg+"<br/><a href='javascript:submitDraw();'>"+json.linkMsg+"</a>");           
+                    }else if(status==5){//抽奖活动结束
+                       $(".noprice").html(json.msg);  
+                       $(".close").hide();    
+                    }else{
+                       $(".noprice").html(json.msg);           
+                    }
+                },2500);
+            },30);      
+      },
+      error:function (XMLHttpRequest, textStatus, e){
+            _move=true;
+            _rotate=-15;
+            $(".circle").css({
+                "webkitTransform":"rotate("+_rotate+"deg)"
+            })
+            //$(".clicktxt").css ("backgroundColor","#fde201");
+            //bol_click=true;
+            //alert("服务器繁忙，请稍后再试！");
+            showAlert();
+    		$(".noprice").html("网络繁忙，请稍后再试！");
+      }
+    });
+}
+
+
+
+$(".clicktxt").click(function(){
+    submitDraw();
+})
+
+
+//关闭弹窗
+$(".close").click(function(){
+    hideAlert();
+    bol_click=true;
+    $(".clicktxt").css("backgroundColor","#fde201");
+})
+
+//获奖名单滚动
+var otranslatex=0;
+
+function priceScroll(){
+    var timer1=null;
+    var ow=$(".pricelist ul").width();
+    var ohtml=$(".pricelist_in ul").html();    
+    $(".pricelist_in ul").html(ohtml+ohtml);
+    fnTimer(ow);
+
+}
+
+function fnTimer(ow){    
+    setTimeout(function(){
+        otranslatex-=2; 
+        if(otranslatex<=-ow){
+            otranslatex=0;
+        }     
+        $(".pricelist_in").css({
+            "webkitTransform":"translate3d("+otranslatex+"px,0,0)",
+            "mozTransform":"translate3d("+otranslatex+"px,0,0)",
+            "msTransform":"translate3d("+otranslatex+"px,0,0)",
+            "oTransform":"translate3d("+otranslatex+"px,0,0)",
+            "transform":"translate3d("+otranslatex+"px,0,0)"
+        });
+        fnTimer(ow);
+    },30)    
+}
+$(document).on("touchmove",function(e) {
+   if(e.target.className.indexOf("layui-layer-shade") >= 0) {
+        e.preventDefault();      
+    } 
+})
+function getRecord(){
+	//document.location.href='/app-site/mall/lucky-draw/record';
+	
+	layer.open({
+				  type:2, 
+				  title :['抽奖记录', 'background:#dc4e26;text-align:center;color:#ffffff; padding-left: 29%;height: 12%;border-bottom: 1px solid rgba(255, 251, 240, 0.15);padding-top: 5px; padding-bottom: 5px;'],
+				  area: ['280px', '350px'],
+				  offset: '80px',
+				  content: '/app-site/mall/lucky-draw/record?userId=1005258&drawId=1' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+				}); 
+}
+
+
+</script>
+</html>
