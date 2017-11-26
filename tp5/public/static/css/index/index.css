@@ -1,0 +1,173 @@
+
+*{
+    padding:0;
+    margin: 0;
+}
+body{
+    font: 14px 微软雅黑, 黑体, Verdana, Arial, sans-serif;
+    border-top: 8px solid #006f47;
+    color: #333333;
+    background: white;
+    min-width: 800px;
+}
+.alldiv{
+    width: 100%; /*960px*/
+    margin: 0 auto;
+}
+.top-head{
+    height: 120px;
+
+}
+.top-left{
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    /*height: */
+}
+.top-menu{
+    float: left;
+    margin-top: 90px;
+    margin-left: 30px;
+}
+.top-menu ul li{
+    display: inline;
+    padding: 5px 10px;
+    background: #efe5d0;
+    margin: 0 5px;
+}
+.top-menu ul li.first-li{
+    background: #c8b99c;
+
+}
+.top-menu ul li a:link,.top-menu ul li a:visited{
+    color: #006f47;
+    text-decoration: none;
+    font-weight: bold;
+}
+.login-resiger{
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 300px;
+    height: 30px;
+}
+.login-resiger ul li{ 
+    display: inline;
+    background: white;
+    float: right;
+}
+#login{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+#phoneLabel{
+    display: block;
+    
+}
+ .midden-content{
+    position: relative;
+     width: 100%;
+     height: 400px;
+     overflow: hidden;
+     zoom: 1;
+}
+  
+ .midden-content img{ 
+     width: 100%; 
+     height: 400px; 
+     min-width: 300px;
+     max-width: 1920px;
+     margin: 0 auto;
+     display: block;
+} 
+/*aside样式*/
+.left-aside{
+    float: left;
+    margin-top: 20px;
+    width: 350px;
+    height: 600px;
+}
+h3{
+    /*text-align: left;*/
+    color: #006f47;
+    font-weight: bold;
+}
+.section-top{
+    padding: 10px;
+}
+.section-bottom{
+    margin-top: 10px;
+    
+}
+.section-bottom header h3{
+    margin-left: 10px;
+}
+section{
+    margin: 10px;
+    padding: 10px 0;
+}
+.section-top,.section-bottom{
+    background-image: url(images/background.gif);
+}
+article{
+    line-height: 1.7;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+.section-top header,.section-bottom header{
+    height: 20px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+figure{
+    float: left;
+    margin-top: 5px;
+}
+figure img{
+    margin-left: 13px;
+    width: 150px;
+    height: 130px;
+}
+figure figcaption{
+    text-align: center;
+}
+/*主视窗*/
+.right-main{
+    background: url(images/background.gif);
+    /*height: 600px;*/
+    margin-left: 350px;
+    margin-top: 30px;
+}
+p{
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+main section{
+    border-bottom: 1px dashed gray;
+
+}
+
+
+
+/*清浮动 */
+.bottom-clear{
+    clear: both;
+}
+footer{
+    padding: 10px;
+    height: 40px;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+    background-color: lightslategray;
+}
+footer h5{
+    text-align: center;
+    height: 20px;
+    margin: 0 auto;
+}
