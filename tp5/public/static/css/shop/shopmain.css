@@ -1,0 +1,163 @@
+body{
+    min-width: 900px;
+    min-height: 300px;
+    background: lightskyblue;
+}
+body div{
+    /* width: 100%; */
+    display: block;
+    margin: 0 auto;
+    background: lightgray;
+    /* margin-top: 10px; */
+    width: 100%;
+}
+/* 前置背景 */
+.form_server{
+  top: 200px;
+  /* height: 400px; */
+  width: 50px;
+  background: transparent;
+  float: left;
+  position: absolute;
+  z-index: 2;
+  position: fixed;
+}
+.form_server ul{
+    margin: 0px;
+    padding: 0px;
+    /* margin-left: -20px; */
+    
+    
+    /* background: red; */
+}
+.form_server ul li{
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    background: rgba(14, 3, 3 ,0.6);
+    display: inline-block;
+}
+.form_server ul li a{
+    color: white;
+}
+.form_server ul li img{
+
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 5px;
+    display: block;
+}
+a:link{
+    text-decoration: none;
+}
+.title-back-div{
+    background: black;
+}
+.title_div{
+    padding-top: 10px;
+    height: 35px;
+    background: black;
+    color: white;
+    width: 900px;
+}
+.loginOrResiger{
+    width: 120px;
+    /* float: right; */
+    margin-top: -20px;
+    margin-right: 10px;
+    background: black;
+    /* height: 10px; */
+}
+.loginOrResiger a{
+    color: white;
+}
+.loginOrResiger a:hover{
+    color:blanchedalmond;
+}
+.top_parent_div{
+    background: cyan;
+    width: 100%;
+    margin-top: -20px;
+}
+.top_div{
+    height: 80px;
+    width: 900px;
+    margin: 0 auto;
+    background: inherit;
+    position: relative;
+}
+/* 列表功能块 */
+.top_div ul{
+    position: absolute;
+    top: 8px;
+    right: 30px;
+    
+}
+/* 产品浮窗 */
+.project{
+    position: absolute;
+    width: 100px;
+    top: 56px;
+    left: 50px;
+    width: 300px;
+    padding: 0px 10px;
+    background: white;
+    overflow: hidden;
+    zoom: 1;
+}
+.project a{
+    color: black;
+}
+.instance_span{
+
+    background: transparent;
+    position: absolute;
+    top: 26px;
+    left: 100px;
+    height: 30px;
+    width: 50px;
+}
+.instance_span span{
+    border-bottom: solid white;
+    border-left: solid transparent;
+    border-right: solid transparent;
+    border-top: solid transparent;
+    display:inline-block;
+    border-width: 10px;
+    background: transparent;
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    height: 0px;
+    width: 0px;
+    display: none;
+}
+.project div{
+    background: white;
+    width:  100%;
+    float: left;
+}
+.top_div ul li{
+    display: inline;
+    font-size: 20px;
+    margin-left: 10px;
+    display: inline-block;
+}
+.top_div ul li a{
+    color: black;
+}
+/*---------------------*/
+.subtitle{
+    top: -20px;
+    left: 0px;
+    margin-top: 0px;
+    font-weight: 300;
+    font-size: 15px;
+    position: relative;
+}
