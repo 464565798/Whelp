@@ -18,13 +18,24 @@ $(document).ready(function(){
     });
 
     // $('.left_arrow').css('backgound','_IMAGE_');
-    var image_array = [ path+'/1.jpg',path+'/2.jpg',path+'/3.jpg'];
+    
     var image_count = image_array.length;
 
     var image_height = '500px';
     for( var i = 0; i < image_count + 1; i++){
         $('.cycle ul').append('<li></li>');
     }
+    for(var i = 0 ;i < image_count;i++){
+        if(i == 0){
+            $('.cycle ol').append('<li class="current_point"></li>');    
+        }else
+        $('.cycle ol').append('<li></li>');
+    }
+    // $('.cycle ol li').eq(0).addClass('current_point');
+    // $('.cycle ol').css('width','20px');
+    // $()
+    // $('.cycle ol').css('height','20px');
+
    let window_width = $(window).width();
    
     $('.cycle ul').css('width',100 * (image_count + 1) + '%');
@@ -37,10 +48,9 @@ $(document).ready(function(){
         $('.cycle ul li').eq(key).css('background-image','url('+value+')');
 
     });
-
     $(window).resize(function(){
         window_width = $(window).width();
-
+        $('.cycle ul li').css('width',window_width + 'px');
     });
     var page = 0 ;
     var timer = null;
@@ -54,7 +64,7 @@ $(document).ready(function(){
             page = image_count - 1; 
             $('.cycle ul').css('left',-(image_count) * window_width + 'px').stop().animate({left:-page * window_width + 'px'},500);
         }
-
+        $('.cycle ol li').eq(page%image_count).addClass('current_point').siblings().removeClass('current_point');
     }
     function nextStep(){
         page ++;
@@ -64,7 +74,7 @@ $(document).ready(function(){
             page = 1;
             $('.cycle ul').css('left',0 + 'px').stop().animate({left:-page * window_width + 'px'},500);
         }
-
+        $('.cycle ol li').eq(page%image_count).addClass('current_point').siblings().removeClass('current_point');
     }
     $('.cycle').mouseenter(function(){
         clearInterval(timer);
@@ -82,4 +92,16 @@ $(document).ready(function(){
     $('.right_arrow').click(function(){
         nextStep();
     });
+    $('.cycle ol li').click(function(){
+        var index = $(this).index();
+        page = index;
+        $('.cycle ul').css('left',-index * window_width + 'px');
+        $(this).addClass('current_point').siblings().removeClass('current_point');
+    });
+    $('.cycle ul li').click(function(){
+        var index = $(this).index();
+        if(index < href_array.length)
+        window.open(href_array[index],'__blank');
+    });
+
 });

@@ -197,13 +197,37 @@ a:link{
 .cycle ul li{
     float:  left;
 }
-
 .cycle ol{
-    float: left;
+    list-style-type: none;
+    /* float: left; */
+    /* width: 100px; */
     position: absolute;
-    background: no-repeat center center;
-    height: 100%;
+    background: lightslategray no-repeat center center;
+    bottom: 20px;
+    /* margin: 0 auto; */
+    left: 50%;
+    margin-left: -50px;
+    height: 20px;;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 5px 5px;
+    /* width: 100px; */
 }
+.cycle ol li{
+    width: 10px;
+    float: left;
+    height: 10px;
+    border-radius: 50%;
+    background: white; 
+    margin: 5px 5px;
+    cursor: pointer;
+    /* background: yellow; */
+}
+.cycle ol .current_point{
+    background: lightcoral;
+}
+
+
 
 /* 左右翻页箭头 */
 .left_arrow , .right_arrow{
