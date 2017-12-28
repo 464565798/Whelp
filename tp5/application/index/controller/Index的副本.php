@@ -1,9 +1,8 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
-// use app\index\validate;
-use app\home\model\User;
-class Index extends Controller
+
+class Api extends Controller
 {
 
     //登录
@@ -30,7 +29,6 @@ class Index extends Controller
     //首页
     public function index()
     {
-        return $this->redirect('shop/index/index');
         // var_dump($_REQUEST);
         // $this->assign('name','ThinkPHP');
         // $this->assign('email','thinkphp@qq.com');
