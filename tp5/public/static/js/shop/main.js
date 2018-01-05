@@ -164,5 +164,10 @@ $(document).ready(function(){
         }
 
     });
+    $('.price-ads table td').mouseenter(function(){
+        $(this).css('background','white');
+    }).mouseleave(function(){
+        $(this).css('background','rgb(250, 250, 250)');
+    });
 
 });
