@@ -7,6 +7,7 @@ body{
     padding-top: 0px;
     
 }
+
 /* 前置背景 */
 .form_server{
   top: 200px;
@@ -449,12 +450,18 @@ a:link{
     top: 5px;
     position: relative;
 }
-
+.content-desc{
+    width: 1170px;
+    margin: 0 auto;
+    background: red;
+}
 .content-desc ul{
     margin-top: 50px;
-    padding-left: 60px;
-    /* padding-right: 105px; */
+
     height: 300px;
+    padding: 0px; 
+    width: 1170px;
+    /* padding-left: 10px; */
 }
 .content-desc ul li{
     width: 370px;
@@ -467,9 +474,7 @@ a:link{
     width: 100%;
     height: 100%;
 }
-.content-desc li{
-    
-}
+
 .content-desc table{
     padding: 0px;
     border-collapse:collapse;
@@ -729,5 +734,45 @@ a:link{
 /* 尾部 */
 .footer{
     height: 280px;
-    background: rgb(36, 45, 59)
+    background: rgb(36, 45, 59);
+    color: white;
+}
+
+.footer .content{
+    margin: 0 auto;
+    width: 1250px;
+    height: 280px;
+} 
+.footer .content div{
+    width: 800px;
+    height: 240px;
+    float: left;
+    margin-left: 20px;
+    
+}
+.footer .content .left{
+    margin-top: 40px;
+}
+.footer .content .left span{
+    line-height: 30px;
+}
+.footer .content .left img{
+    width: 20px;
+    height: 20px;
+}
+.footer .content .right{
+    margin-top: 20px;
+    width: 400px;
+    height: 260px;
+    
+}
+.footer tr{
+    height: 40px;
+}
+
+.footer tr img{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 2px;
 }
