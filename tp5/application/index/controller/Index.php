@@ -5,7 +5,9 @@ use think\Controller;
 use app\home\model\User;
 class Index extends Controller
 {
-
+    public function try(){
+        return 'hehe';
+    }
     //登录
     public function login($error='')
     {   
@@ -30,7 +32,7 @@ class Index extends Controller
     //首页
     public function index()
     {
-        return $this->redirect('shop/index/index');
+        // return $this->redirect('shop/index/index');
         // var_dump($_REQUEST);
         // $this->assign('name','ThinkPHP');
         // $this->assign('email','thinkphp@qq.com');

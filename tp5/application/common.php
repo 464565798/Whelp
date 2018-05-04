@@ -14,6 +14,7 @@
 //忽略错误提示
 // error_reporting(E_ERROR | E_WARNING | E_PARSE);
 \think\Lang::setAllowLangList(['zh-cn','en-us']);
+use think\Request;
 function putError($message){
 
     return json(['code'=>400,'message'=>$message,'result'=>[]]);
@@ -28,4 +29,7 @@ function vertifierParam($param,$vertifier){
         }
     }
     return true;
+}
+function verfierUser(Request $request,$userId){
+	return $userId;
 }
